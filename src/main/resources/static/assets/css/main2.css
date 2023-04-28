@@ -1,0 +1,288 @@
+body {
+	font-family: "NanumSquareRound";
+	-webkit-font-smoothing: antialiased;
+}
+
+.sign-container {
+	display: inline-block;
+	width: 450px;
+	text-align: left;
+	border : 1px solid lightgray;
+	border-radius: 1rem;
+	margin-top: 5rem;
+}
+
+#main-container {
+	width: 100%;
+	height: 63vh;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+		url("../img/background.jpg");
+	/* background-image: url('./assets/img/background.jpg'); */
+	background-size: cover;
+	opacity: 90%;
+	display: flex;
+	justify-content: center;
+}
+
+#info-message {
+	margin-top: 12rem;
+	color: white;
+	text-align: center;
+}
+
+#title-header {
+	/*font-family: "NanumSquareRoundEB";*/
+	font-family: 'Titan One', cursive;
+	font-size: 5rem;
+}
+
+.submit-btn {
+	/* background-color: white; */
+	background-color: #aebdca;
+	color: white;
+}
+
+.submit-btn:hover {
+	/* background-color: white; */
+	background-color: #8fa5b8;
+	color: white;
+}
+
+.service-item {
+	border: 2px solid #aebdca;
+	border-radius: 0.5rem;
+}
+
+.service-item .icon {
+	font-size: 3.2rem;
+	color: #8fa5b8;
+}
+
+.service-item .icon:hover {
+	color: #8fa5b8;
+}
+
+h1 span {
+	position: relative;
+	top: 20px;
+	display: inline-block;
+	animation: bounce .3s ease infinite alternate;
+	color: #FFF;
+	text-shadow: 0 1px 0 #CCC, 0 2px 0 #CCC, 0 3px 0 #CCC, 0 4px 0 #CCC, 0
+		5px 0 #CCC, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0
+		transparent, 0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, .4);
+}
+
+h1 span:nth-child(2) {
+	animation-delay: .1s;
+}
+
+h1 span:nth-child(3) {
+	animation-delay: .2s;
+}
+
+h1 span:nth-child(4) {
+	animation-delay: .3s;
+}
+
+h1 span:nth-child(5) {
+	animation-delay: .4s;
+}
+
+h1 span:nth-child(6) {
+	animation-delay: .5s;
+}
+
+h1 span:nth-child(7) {
+	animation-delay: .6s;
+}
+
+h1 span:nth-child(8) {
+	animation-delay: .7s;
+}
+
+h1 span:nth-child(9) {
+	animation-delay: .8s;
+}
+
+h1 span:nth-child(10) {
+	animation-delay: .9s;
+}
+
+h1 span:nth-child(11) {
+	animation-delay: .10s;
+}
+
+h1 span:nth-child(12) {
+	animation-delay: .11s;
+}
+
+h1 span:nth-child(13) {
+	animation-delay: .12s;
+}
+
+@
+keyframes bounce { 100% {
+	top: -5px;
+	text-shadow: 0 1px 0 #CCC, 0 2px 0 #CCC, 0 3px 0 #CCC, 0 4px 0 #CCC, 0
+		5px 0 #CCC, 0 6px 0 #CCC, 0 7px 0 #CCC, 0 8px 0 #CCC, 0 9px 0 #CCC, 0
+		50px 25px rgba(0, 0, 0, .2);
+}
+
+}
+
+.hotplace-profile-img {
+	width: 20px;
+	height: 20px;
+	object-fit: cover;
+}
+
+.hotplace-icon {
+	font-size: 25px;
+}
+
+.wrap {
+	position: absolute;
+	left: 0;
+	bottom: 40px;
+	width: 288px;
+	height: 132px;
+	margin-left: -144px;
+	text-align: left;
+	overflow: hidden;
+	font-size: 12px;
+	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+	line-height: 1.5;
+}
+
+.wrap * {
+	padding: 0;
+	margin: 0;
+}
+
+.wrap .info {
+	width: 286px;
+	height: 120px;
+	border-radius: 5px;
+	border-bottom: 2px solid #ccc;
+	border-right: 1px solid #ccc;
+	overflow: hidden;
+	background: #fff;
+}
+
+.wrap .info:nth-child(1) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+}
+
+.info .title {
+	padding: 5px 0 0 10px;
+	height: 30px;
+	background: #eee;
+	border-bottom: 1px solid #ddd;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.info .close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #888;
+	width: 17px;
+	height: 17px;
+	background:
+		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
+}
+
+.info .close:hover {
+	cursor: pointer;
+}
+
+.info .body {
+	position: relative;
+	overflow: hidden;
+}
+
+.info .desc {
+	position: relative;
+	margin: 13px 0 0 90px;
+	height: 75px;
+}
+
+.desc .ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.desc .jibun {
+	font-size: 11px;
+	color: #888;
+	margin-top: -2px;
+}
+
+.info .img {
+	position: absolute;
+	top: 6px;
+	left: 5px;
+	width: 73px;
+	height: 71px;
+	border: 1px solid #ddd;
+	color: #888;
+	overflow: hidden;
+}
+
+.info:after {
+	content: '';
+	position: absolute;
+	margin-left: -12px;
+	left: 50%;
+	bottom: 0;
+	width: 22px;
+	height: 12px;
+	background:
+		url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+.info .link {
+	color: #5085BB;
+}
+
+#plan-add-btn:hover {
+	background-color: #dcdcdc;
+	color: black;
+	cursor: pointer;
+}
+
+.trip-plan-card:hover {
+	background-color: rgb(18, 79, 211);
+	color: white;
+	cursor: pointer;
+}
+
+.trip-plan-card:focus {
+	background-color: rgb(18, 79, 211);
+	color: white;
+}
+
+.trip-plan-card:active {
+	background-color: rgb(18, 79, 211);
+	color: white;
+}
+
+#plan-delete-btn:hover {
+	background-color: #FFA6C5;
+	color: black;
+	cursor: pointer;
+}
+
+#plan-save-btn:hover {
+	background-color: #64AAFF;
+	color: black;
+	cursor: pointer;
+}
+
+.place-title {
+	font-weight: bold;
+}
