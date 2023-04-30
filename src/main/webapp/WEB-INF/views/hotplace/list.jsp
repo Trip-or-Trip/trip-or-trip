@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%@ include file="/include/head.jsp" %>
-  <link rel="stylesheet" href="assets/css/main.css">
+  <%@ include file="/WEB-INF/views/include/head.jsp" %>
+  <link rel="stylesheet" href="${root}/assets/css/main.css">
   
   <style>
     .bg-nav {
@@ -13,8 +13,7 @@
   </style>
 </head>
 <body>
-  <%@ include file="/include/nav.jsp" %>
-  <!-- <%@ include file="/include/check.jsp" %> -->
+  <%@ include file="/WEB-INF/views/include/nav.jsp" %>
 
   <main>
     <div class='m-5'>
@@ -153,6 +152,6 @@
 		form.submit();
 	}
   </script>
-  <%@ include file="/include/footer.jsp" %>
+  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

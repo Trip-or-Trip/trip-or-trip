@@ -4,8 +4,8 @@
 <html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <%@ include file="/include/head.jsp" %>
-  <link rel="stylesheet" href="assets/css/main.css">
+  <%@ include file="/WEB-INF/views/include/head.jsp" %>
+  <link rel="stylesheet" href="${root}/assets/css/main.css">
   
   <script type="text/javascript" src="${root}/assets/js/rsa.js"></script>
   <script type="text/javascript" src="${root}/assets/js/jsbn.js"></script>
@@ -19,16 +19,16 @@
   </style>
 </head>
 <body>
-<%@ include file="/include/nav.jsp" %>
+<%@ include file="/WEB-INF/views/include/nav.jsp" %>
 
 	<div class="sign-container">
         <div class="signin">
-        	<form id="signin-form" method="POST" role="search">
+        	<form id="signin-form" method="POST" action="${root}/user/signin" role="search">
         		<input type="hidden" name="action" value="signin">
                 <input type="hidden" id="signin-RSAModulus" value="${RSAModulus}"/>
     			<input type="hidden" id="signin-RSAExponent" value="${RSAExponent}"/>
-       			<input type="hidden" id="signin-encode-id" name="signin-encode-id">
-       			<input type="hidden" id="signin-encode-password" name="signin-encode-password">
+       			<input type="hidden" id="signin-encode-id" name="encode-id">
+       			<input type="hidden" id="signin-encode-password" name="encode-password">
         		
         		<div class="row mt-4 ms-2">
 	            	<h2>로그인</h2>
@@ -36,12 +36,12 @@
 	            <hr>
 	            <div class="row d-flex justify-content-center my-4">
 	            	<div class="col-10">
-	                	<input type="text" class="form-control" name="signin-id" id="signin-id" placeholder="아이디">
+	                	<input type="text" class="form-control" name="id" id="signin-id" placeholder="아이디">
 					</div>
 	            </div>
 	            <div class="row d-flex justify-content-center my-4">
 	            	<div class="col-10">
-	                	<input type="password" class="form-control" name="signin-password" id="signin-password" placeholder="비밀번호">
+	                	<input type="password" class="form-control" name="password" id="signin-password" placeholder="비밀번호">
 	            	</div>
 	            </div>
 	            <div class="row d-flex justify-content-center my-4">
@@ -55,6 +55,10 @@
     
     
     <script>
+      if("${msg}") {
+    	  alert("${msg}");
+      }
+      
 	  document.getElementById('signin-btn').addEventListener("click", function() {
 		  let id = $("#signin-id").val();
 	      let pw = $("#signin-password").val();
@@ -73,15 +77,15 @@
 			  $("#signin-encode-id").val(rsa.encrypt(id));
 		      $("#signin-encode-password").val(rsa.encrypt(pw));
 		        
-		      document.getElementById('signin-id').value = "";
-		      document.getElementById('signin-password').value = "";
+		      //document.getElementById('signin-id').value = "";
+		      //document.getElementById('signin-password').value = "";
 		        
 			  let form = document.querySelector("#signin-form");
-			  form.setAttribute("action", "${root}/user");
+//			  form.setAttribute("action", "${root}/user");
 			  form.submit();
 		  }
 	  });
     </script>
-    <%@ include file="/include/footer.jsp" %>
+    <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

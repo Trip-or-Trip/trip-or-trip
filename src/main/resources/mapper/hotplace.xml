@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.hotplace.model.mapper.HotplaceMapper">
+	
+	<select id="listHotplace" resultType="hotplaceDto">
+		select user_id userId, image, title, join_date joinDate, `desc`, tag1, tag2, latitude, longitude, map_url mapUrl
+		from hotplace
+	</select>
+	
+	<select id="insertHotplace" parameterType="hotplaceDto">
+		insert into hotplace (user_id, image, title, join_date, `desc`, tag1, tag2, latitude, longitude, map_url)
+		values (#{userId}, #{image}, #{title}, #{joinDate}, #{desc}, #{tag1}, #{tag2}, #{latitude}, #{longitude}, #{mapUrl})
+	</select>
+	
+</mapper>
