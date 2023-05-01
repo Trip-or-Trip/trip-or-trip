@@ -42,7 +42,7 @@ var overlay = {};
 //지도에 마커를 표시하는 함수입니다
 function displayMarker(place) {
 	// 마커 이미지의 이미지 주소입니다
-	  var imageSrc = "./assets/img/icon/location.png";
+	  var imageSrc = "${root}/assets/img/icon/location.png";
 
   // 마커 이미지의 이미지 크기 입니다
   var imageSize = new kakao.maps.Size(30, 35);
@@ -61,7 +61,7 @@ function displayMarker(place) {
   markers.push(marker);
 
   var content = "";
-  var noimg = "./assets/img/noimage.png";
+  var noimg = "${root}/assets/img/noimage.png";
 
 // 마커에 클릭이벤트를 등록합니다
 kakao.maps.event.addListener(marker, "click", function () {

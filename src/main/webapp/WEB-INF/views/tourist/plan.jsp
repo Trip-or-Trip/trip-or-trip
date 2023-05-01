@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="/include/head.jsp"%>
-<link href="./assets/css/main.css" type="text/css" rel="stylesheet">
+<%@ include file="/WEB-INF/views/include/head.jsp"%>
+<link rel="stylesheet" href="${root}/assets/css/main.css">
 </head>
 
 <body>
-	<%@ include file="/include/nav.jsp"%>
+	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	<main class="container">
 	<div>
 		<form class="d-flex my-3" onsubmit="return false;" role="search">
@@ -75,13 +75,12 @@
 	<div class="divider mb-5"></div>
 	</main>
 </body>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=991fde334716cbc5bbcac85358cf5e88&libraries=services,clusterer,drawing"></script>
-<script src="./assets/js/key.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=59e882a5fca53baf25f45f5258f75f43&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="${root}/assets/js/key.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
 	crossorigin="anonymous"></script>
-<script src="./assets/js/plan.js"></script>
 
+<script type="text/javascript" src="${root}/assets/js/plan.js"></script>
 </html>

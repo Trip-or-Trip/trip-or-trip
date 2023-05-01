@@ -4,7 +4,7 @@
 <html>
 <head>
 <%@ include file="/include/head.jsp"%>
-<link href="./assets/css/main.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="${root}/assets/css/main.css">
 	<style>
       .bg-nav {
       	background-color: #7895B2;
@@ -88,10 +88,10 @@
 </body>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=991fde334716cbc5bbcac85358cf5e88&libraries=services,clusterer,drawing"></script>
-<script src="./assets/js/key.js"></script>
+<script src="${root}/assets/js/key.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
 	crossorigin="anonymous"></script>
-<script src="./assets/js/planView.js"></script>
+<script src="${root}/assets/js/planView.js"></script>
 </html>

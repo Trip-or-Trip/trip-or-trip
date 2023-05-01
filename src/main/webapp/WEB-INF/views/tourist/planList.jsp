@@ -3,18 +3,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="/include/head.jsp"%>
-<link href="./assets/css/main.css" type="text/css" rel="stylesheet">
+<%@ include file="/WEB-INF/views/include/head.jsp"%>
+<link href="${root}/assets/css/main.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-	<%@ include file="/include/nav.jsp"%>
+	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	<button id="plan-create" class="btn btn-primary"><strong>여행 경로 만들기</strong></button>
 	
 </body>
 <script>
 	document.querySelector("#plan-create").addEventListener("click", () => {
-		location.href="${root}/plan?action=mvplan";
+		location.href="${root}/plan/mvplan";
 	});
 </script>
 <script

@@ -67,7 +67,7 @@ document.getElementById("plan-add-btn").addEventListener("click", () => {
 document.getElementById("plan-save-btn").addEventListener("click", () => {
 	console.log("add-btn");
 	let form = document.getElementById("plan-form");
-	form.setAttribute("action", "plan");
+	form.setAttribute("action", "save");
 	form.submit();
 });
 
@@ -95,7 +95,7 @@ document.getElementById("plan-delete-btn").addEventListener("click", () => {
 /** 선 지우기 */
 function deleteLine() {
   deleteClickLine();
-  deleteDistnce();
+  deleteDistance();
   deleteCircleDot();
 }
 
@@ -174,7 +174,7 @@ function makeOption(data) {
 // 지도에 마커를 표시하는 함수입니다
 function displayMarker(place) {
 	// 마커 이미지의 이미지 주소입니다
-	  var imageSrc = "./assets/img/icon/location.png";
+	  var imageSrc = "${root}/assets/img/icon/location.png";
 
     // 마커 이미지의 이미지 크기 입니다
     var imageSize = new kakao.maps.Size(30, 35);
@@ -302,7 +302,7 @@ function drawLine(latlng) {
     deleteClickLine();
 
     // 지도 위에 커스텀오버레이가 표시되고 있다면 지도에서 제거합니다
-    deleteDistnce();
+    deleteDistance();
 
     // 지도 위에 선을 그리기 위해 클릭한 지점과 해당 지점의 거리정보가 표시되고 있다면 지도에서 제거합니다
     deleteCircleDot();
@@ -374,7 +374,7 @@ function showDistance(content, position) {
 
 // 그려지고 있는 선의 총거리 정보와
 // 선 그리기가 종료됐을 때 선의 정보를 표시하는 커스텀 오버레이를 삭제하는 함수입니다
-function deleteDistnce() {
+function deleteDistance() {
   if (distanceOverlay) {
     distanceOverlay.setMap(null);
     distanceOverlay = null;

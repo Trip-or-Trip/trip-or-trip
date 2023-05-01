@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="/include/head.jsp"%>
-<link href="./assets/css/main.css" type="text/css" rel="stylesheet">
+<%@ include file="/WEB-INF/views/include/head.jsp"%>
+<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+<link href="${root}/assets/css/main.css" type="text/css" rel="stylesheet">
 	<style>
       .bg-nav {
       	background-color: #7895B2;
@@ -13,7 +14,7 @@
 </head>
 
 <body>
-	<%@ include file="/include/nav.jsp"%>
+	
 	<div class="row justify-content-center">
 		<div class="col-lg-8 col-md-10 col-sm-12">
 			<h2 class="my-3 py-3 rounded shadow-sm bg-light text-center">
@@ -83,7 +84,7 @@
 	<script>
 	document.querySelector("#navbar").classList.add("navbar-dark");
 	document.querySelector("#plan-create").addEventListener("click", function () {
-		location.href="${root}/plan?action=mvplan";
+		location.href="${root}/plan/mvplan?pgno=${param.pgno}&key=${param.key}&word=${param.word}";
 	});
 	</script>
 	<script>
@@ -91,7 +92,7 @@
       titles.forEach(function (title) {
         title.addEventListener("click", function () {
           console.log(this.getAttribute("data-no"));
-          location.href = "${root}/plan?action=view&articleno=" + this.getAttribute("data-no");
+          location.href = "${root}/plan/view&articleno=" + this.getAttribute("data-no");
         });
       });
       
@@ -113,7 +114,7 @@
         });
       });
     </script>
-  <%@ include file="/include/footer.jsp" %>
+  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
