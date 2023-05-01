@@ -4,8 +4,9 @@ public class UserDto {
 	private String id;
 	private String password;
 	private String name;
-	private String email;
-	private char grade;
+	private String emailId;
+	private String emailDomain;
+	private String grade;
 	
 	public String getId() {
 		return id;
@@ -25,16 +26,22 @@ public class UserDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getEmail() {
-		return email;
+	public String getEmailId() {
+		return emailId;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
-	public char getGrade() {
+	public String getEmailDomain() {
+		return emailDomain;
+	}
+	public void setEmailDomain(String emailDomain) {
+		this.emailDomain = emailDomain;
+	}
+	public String getGrade() {
 		return grade;
 	}
-	public void setGrade(char grade) {
+	public void setGrade(String grade) {
 		this.grade = grade;
 	}
 	
@@ -47,8 +54,10 @@ public class UserDto {
 		builder.append(password);
 		builder.append(", name=");
 		builder.append(name);
-		builder.append(", email=");
-		builder.append(email);
+		builder.append(", emailId=");
+		builder.append(emailId);
+		builder.append(", emailDomain=");
+		builder.append(emailDomain);
 		builder.append(", grade=");
 		builder.append(grade);
 		builder.append("]");
