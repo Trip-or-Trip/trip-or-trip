@@ -23,18 +23,23 @@
         	</c:if>
         >
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="${root}/tourist?action=mvregion">
+            <a class="nav-link active" aria-current="page" href="${root}/tourist/mvregion">
                        지역별 관광지 검색
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="${root}/plan?action=mvplanlist">
+            <a class="nav-link active" href="${root}/plan/mvplanlist?pgno=1&key=&word=">
                        여행경로 보기
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="${root}/hotplace/list">
                        핫플레이스 보기
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="${root}/board/list?pgno=1&key=&word=">
+                      게시판
             </a>
           </li>
         </ul>
