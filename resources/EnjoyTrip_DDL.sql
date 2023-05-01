@@ -22,7 +22,8 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-insert into user values ('ssafy', '1234', '김싸피', 'ssafy', 'ssafy.com', '관리자');
+insert into user values ('admin', '1234', '관리자', 'admin', 'ssafy.com', '관리자');
+insert into user values ('ssafy', '1234', '김싸피', 'ssafy', 'ssafy.com', '일반 회원');
 
 
 -- 핫플레이스 테이블
