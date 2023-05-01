@@ -19,13 +19,13 @@
 <c:if test="${article eq null}">
   <script>
     alert("글이 삭제되었거나 부적절한 URL 접근입니다.");
-    location.href = "${root}/board/list";
+    location.href = "${root}/notice/list";
   </script>
 </c:if>
 <div class="row justify-content-center">
   <div class="col-lg-8 col-md-10 col-sm-12">
     <h2 class="my-3 py-3 shadow-sm bg-light text-center">
-      <mark class="sky">게시글 상세</mark>
+      <mark class="sky">공지사항 상세</mark>
     </h2>
   </div>
   <div class="col-lg-8 col-md-10 col-sm-12">
@@ -86,14 +86,14 @@
 </div>
 <script>
   document.querySelector("#btn-list").addEventListener("click", function () {
-    location.href = "${root}/board/list?pgno=${param.pgno}&key=${param.key}&word=${param.word}";
+    location.href = "${root}/notice/list?pgno=${param.pgno}&key=${param.key}&word=${param.word}";
   });
   document.querySelector("#btn-mv-modify").addEventListener("click", function () {
-    location.href = "${root}/board/modify?articleno=" + ${article.id}+"&pgno=${param.pgno}&key=${param.key}&word=${param.word}";
+    location.href = "${root}/notice/modify?articleno=" + ${article.id}+"&pgno=${param.pgno}&key=${param.key}&word=${param.word}";
   });
   document.querySelector("#btn-delete").addEventListener("click", function () {
 	  abf = confirm("정말 삭제하시겠씁니까?");
-	  if (abf == true) location.href = "${root}/board/delete?articleno=" + ${article.id};
+	  if (abf == true) location.href = "${root}/notice/delete?articleno=" + ${article.id};
     
   });
 </script>
