@@ -123,10 +123,9 @@
 	  
 	  document.getElementById("update-btn").addEventListener("click", function() {
 		  let pw = document.getElementById('update-password').value;
-		  let email = document.getElementById('update-email').value;
 	
 		  // 입력값 검증
-		  if (pw == '' || email == '') {
+		  if (pw == '') {
 		    alert("빈칸이 없도록 입력해주세요.");
 		    return;
 		  } else {

@@ -145,14 +145,14 @@
                       </div>
                     </div>
                     <div class="row d-flex justify-content-center">
-                      <div class="col-10">
+					  <div class="col-10 mb-3">
                         <span>이메일</span>
                         <input
-                          type="text"
+                          type="email"
                           class="form-control my-3 px-3 py-2"
                           id="view-email"
                           name="view-email"
-                          value="${userinfo.email}"
+                          value="${userinfo.emailId}@${userinfo.emailDomain}"
                           readonly
                         />
                       </div>
@@ -236,14 +236,15 @@
                         </div>
                       </div>
                       <div class="row d-flex justify-content-center">
-                        <div class="col-10">
+                        <div class="col-10 mb-3">
                           <span>이메일</span>
                           <input
-                            type="text"
+                            type="email"
                             class="form-control my-3 px-3 py-2"
                             id="update-email"
                             name="email"
-                            value="${userinfo.email}"
+                            value="${userinfo.emailId}@${userinfo.emailDomain}"
+                            readonly
                           />
                         </div>
                       </div>

@@ -62,8 +62,16 @@
 					</div>
 	            </div>
 	            <div class="row d-flex justify-content-center my-4">
-	            	<div class="col-10">
-	                	<input type="email" class="form-control" name="email" id="signup-email" placeholder="이메일">
+	            	<div class="col-5">
+	                	<input type="text" class="form-control" name="emailId" id="signup-email-id" placeholder="이메일">
+					</div>
+					@
+					<div class="col-5">
+						<select class="form-control" name="emailDomain" id="signup-email-domain">
+							<option value="none" selected="selected">도메인 선택</option>
+							<option value="naver.com">naver.com</option>
+							<option value="gmail.com">gmail.com</option>
+						</select>
 					</div>
 	            </div>
 	            <div class="row d-flex justify-content-center submit my-4">
@@ -84,10 +92,11 @@
 		  let pw = document.getElementById('signup-password').value;
 		  let pwCheck = document.getElementById('signup-check-password').value;
 		  let name = document.getElementById('signup-name').value;
-		  let email = document.getElementById('signup-email').value;
+		  let emailId = document.getElementById('signup-email-id').value;
+		  let emailDomain = document.getElementById('signup-email-domain').value;
 	
 		  // 입력값 검증
-		  if (id == '' || pw == '' || name == '' || email == '') {
+		  if (id == '' || pw == '' || name == '' || emailId == '' || emailDomain == 'none') {
 		    alert("빈칸이 없도록 입력해 주세요.");
 		    return;
 		  }
@@ -117,10 +126,17 @@
 	  	});
 		
 		document.getElementById("signup-id").addEventListener("keyup", function() {
-			fetch("${root}/user/idcheck/" + this.value)
+			let resultElement = document.getElementById("check-id-result");
+			
+			if(this.value.length < 5) {
+				resultElement.setAttribute("class", "ms-2 text-danger");
+				resultElement.textContent  = "아이디는 5자 이상 가능합니다.";
+				isValidId = false;
+			}
+			else {
+				fetch("${root}/user/idcheck/" + this.value)
 				.then(response => response.text())
 				.then(data => {
-					let resultElement = document.getElementById("check-id-result");
 					if(data == 0) {
 						resultElement.setAttribute("class", "ms-2 text-primary");
 						resultElement.textContent  = this.value + "는 사용 가능한 아이디입니다.";
@@ -132,6 +148,7 @@
 						isValidId = false;
 					}
 				});
+			}
 		});
 	</script>
 	<%@ include file="/WEB-INF/views/include/footer.jsp" %>
