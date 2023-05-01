@@ -17,11 +17,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="service-list"
-        	<c:if test="${empty userinfo}">
-        	  style="visibility: hidden;"
-        	</c:if>
-        >
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="service-list">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="${root}/tourist/region">
                        지역별 관광지 검색

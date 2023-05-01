@@ -16,7 +16,8 @@ import com.ssafy.interceptor.ConfirmInterceptor;
 @Configuration
 @MapperScan(basePackages = {"com.ssafy.**.mapper"})
 public class WebMvcConfiguration implements WebMvcConfigurer{
-//	private final List<String> patterns = Arrays.asList("/hotplace/*", "/", "/user/list");
+	private final List<String> patterns = Arrays.asList("/hotplace/**", "/plan/**", "/board/**");
+	private final List<String> excludePatterns = Arrays.asList("/hotplace/list", "/plan/mvplanlist", "/board/list", "/board/view");
 	private ConfirmInterceptor confirmInterceptor;
 	
 	public WebMvcConfiguration(ConfirmInterceptor confirmInterceptor) {
@@ -26,6 +27,9 @@ public class WebMvcConfiguration implements WebMvcConfigurer{
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 //		registry.addInterceptor(confirmInterceptor).addPathPatterns(patterns);
+		registry.addInterceptor(confirmInterceptor)
+        .addPathPatterns(patterns)
+        .excludePathPatterns(excludePatterns);
 	}
 
 	@Override

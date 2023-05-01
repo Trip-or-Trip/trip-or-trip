@@ -31,11 +31,7 @@
         </div>
       </div>
     </section>
-    <section id="service-list" class="service-list"
-    	<c:if test="${empty userinfo}">
-    	  style="visibility: hidden;"
-    	</c:if>
-    >
+    <section id="service-list" class="service-list">
       <div class="container">
         <div class="row justify-content-center">
           <!-- 서비스 기능 start -->
