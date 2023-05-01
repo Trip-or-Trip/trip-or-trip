@@ -1,15 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
- <%@ include file="/WEB-INF/views/include/head.jsp" %>
-<%-- <%@ include file="/common/confirm.jsp" %> --%>
-<%@ include file="/WEB-INF/views/include/nav.jsp" %>
+<!DOCTYPE html>
+<html>
+<head>
+<%@ include file="/WEB-INF/views/include/head.jsp"%>
+<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+<link href="${root}/assets/css/main.css" type="text/css" rel="stylesheet">
+	<style>
+      .bg-nav {
+      	background-color: #7895B2;
+      }
+  	</style>
+</head>
+
+<body>
       <div class="row justify-content-center">
-        <div class="col-sm-12">
+        <div class="col-lg-8 col-md-10 col-sm-12">
           <h2 class="my-3 py-3 shadow-sm bg-light text-center">
-            <mark class="sky">글목록</mark>
+            <mark class="sky">게시판</mark>
           </h2>
         </div>
-        <div class="col-sm-12">
+        <div class="col-lg-8 col-md-10 col-sm-12">
           <div class="row align-self-center mb-2">
             <div class="col-md-2 text-start">
               <button type="button" id="btn-mv-register" class="btn btn-outline-primary btn-sm">
@@ -67,9 +78,14 @@
 	                <td>${article.hit}</td>
 	                <td>${article.createdAt}</td>
 	              </tr>            
-				</c:forEach>   
+				</c:forEach> 
+				 
             </tbody>
+            
           </table>
+          <c:if test="${empty articles}">
+			<div style="text-align:center; margin:50px"> 등록된 게시글이 없습니다. </div>
+		</c:if> 
         </div>
         <div class="row">
           ${navigation.navigator}
@@ -114,3 +130,9 @@
       });
     </script>
  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+</body>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+	crossorigin="anonymous"></script>
+</html>
