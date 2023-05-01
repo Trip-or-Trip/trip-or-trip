@@ -4,11 +4,17 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/views/include/head.jsp"%>
-<link rel="stylesheet" href="${root}/assets/css/main.css">
+
+<link href="${root}/assets/css/main.css" type="text/css" rel="stylesheet">
+	<style>
+      .bg-nav {
+      	background-color: #7895B2;
+      }
+  	</style>
 </head>
 
 <body>
-	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	<main class="container">
 	<div>
 		<form class="d-flex my-3" onsubmit="return false;" role="search">
@@ -43,6 +49,7 @@
 				<h3 id="plan-title" class="text-center p-2"><strong>여행 계획</strong></h3>
 				<form id="plan-form" onsubmit="return false;" role="search"
 					method="POST">
+					<input type="hidden" id="root" name="root" value="${root}">
 					<input type="hidden" name="action" value="save">
 					<div>
 						<div>
@@ -56,9 +63,9 @@
 						    <br>
 						    <div class="plan-detail-date d-flex flex-row justify-content-between mb-3" style="width: 70%;">
 							    <label for="start_datepicker" ><strong>출발일</strong></label>
-							    <input type="date" name="start_date" id="start_datepicker" placeholder="년도-월-일" style="width: 8em; height: 1.8em;"class="plan-detail-content plan-detail-start ms-2 me-2 align-middle rounded shadow border-light-subtle">
+							    <input type="date" name="startDate" id="start_datepicker" placeholder="년도-월-일" style="width: 8em; height: 1.8em;"class="plan-detail-content plan-detail-start ms-2 me-2 align-middle rounded shadow border-light-subtle">
 							    <label for="end_datepicker"><strong>도착일</strong></label>
-							    <input type="date" name="end_date" id="end_datepicker" placeholder="년도-월-일" style="width: 8em; height: 1.8em;" class="plan-detail-content plan-detail-end ms-2 me-2 align-middle rounded shadow border-light-subtle">
+							    <input type="date" name="endDate" id="end_datepicker" placeholder="년도-월-일" style="width: 8em; height: 1.8em;" class="plan-detail-content plan-detail-end ms-2 me-2 align-middle rounded shadow border-light-subtle">
 						    </div>
 						    <label for="description"><strong>상세 계획</strong></label>
 						    <textarea name="description" id="description" placeholder="상세 계획을 적어보자!" class="plan-detail-content align-middle ms-2 mt-2 rounded shadow border-light-subtle" style="width: 70%; height: 10em;"></textarea>
@@ -81,6 +88,6 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
 	crossorigin="anonymous"></script>
-
+<script>console.log("${root}");</script>
 <script type="text/javascript" src="${root}/assets/js/plan.js"></script>
 </html>

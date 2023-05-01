@@ -41,7 +41,7 @@ public class PlanServiceImpl implements PlanService {
 	}
 
 	@Override
-	public int deletePlan(String id) throws SQLException {
+	public int deletePlan(int id) throws SQLException {
 		return planMapper.deletePlan(id);
 	}
 

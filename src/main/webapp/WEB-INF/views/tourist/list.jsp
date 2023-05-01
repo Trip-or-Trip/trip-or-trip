@@ -4,7 +4,6 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/views/include/head.jsp"%>
-<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 <link href="${root}/assets/css/main.css" type="text/css" rel="stylesheet">
 	<style>
       .bg-nav {
@@ -14,7 +13,7 @@
 </head>
 
 <body>
-	
+	<%@ include file="/WEB-INF/views/include/nav.jsp"%>
 	<div class="row justify-content-center">
 		<div class="col-lg-8 col-md-10 col-sm-12">
 			<h2 class="my-3 py-3 rounded shadow-sm bg-light text-center">
@@ -92,7 +91,7 @@
       titles.forEach(function (title) {
         title.addEventListener("click", function () {
           console.log(this.getAttribute("data-no"));
-          location.href = "${root}/plan/view&articleno=" + this.getAttribute("data-no");
+          location.href = "${root}/plan/view?articleno=" + this.getAttribute("data-no")+"&pgno=${param.pgno}&key=${param.key}&word=${param.word}";
         });
       });
       

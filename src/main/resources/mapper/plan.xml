@@ -41,7 +41,7 @@
 
 
 	<!--  여행 경로 삭제 -->
-	<delete id="deletePlan" parameterType="string">
+	<delete id="deletePlan" parameterType="int">
 		delete from plan
 		where id = #{id}
 	</delete>
@@ -54,6 +54,7 @@
 		<where>
 			<include refid="search"></include>
 		</where>
+		order by created_at desc;
 	</select>
 	
 	
@@ -62,6 +63,7 @@
 		select id, title, description, created_at, updated_at, start_date, end_date, user_id, hit 
 		from plan
 		where id = #{articleNo}
+		order by created_at desc;
 	</select>
 	
 	
@@ -84,7 +86,7 @@
 	<update id="updateHit" parameterType="int">
 		update plan
 		set hit = hit + 1
-		where article_no = #{articleNo}
+		where id = #{id}
 	</update>
 	
 	<!-- 전체 게시글 수 조회 -->

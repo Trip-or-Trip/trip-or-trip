@@ -111,7 +111,7 @@ public class BoardController {
 		System.out.println(boardDto.toString());
 		try {
 			boardService.writeArticle(boardDto);
-			return "/board/list?pgno=1key=word="; //게시글 작성 후 list의 첫번째 페이지로 이동
+			return "redirect:/board/list?pgno=1&key=&word="; //게시글 작성 후 list의 첫번째 페이지로 이동
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("msg", "글 작성 중 에러 발생!");
@@ -142,7 +142,7 @@ public class BoardController {
 			// 게시글 변경
 			boardDto.setId(articleNo);
 			boardService.modifyArticle(boardDto);
-			return "board/view?articleno="+articleNo+"&pgno=1&key=&word=";
+			return "redirect:/board/view?articleno="+articleNo+"&pgno=1&key=&word=";
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.addAttribute("msg", "게시글 수정 중 에러 발생");
@@ -160,7 +160,7 @@ public class BoardController {
 			if(boardDto.getUserId().equals(userDto.getId())) {
 				boardService.deleteArticle(articleNo);
 				// 게시글 변경 후 응답처리?
-				return "/board/list?pgno=1&key=&word=";
+				return "redirect:/board/list?pgno=1&key=&word=";
 			}else {
 				model.addAttribute("msg", "본인의 게시글만 삭제 가능합니다.");
 				return "error/error";

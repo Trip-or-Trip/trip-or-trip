@@ -101,34 +101,39 @@ public class PlanController {
 	 * 출발일 - 도착일 - 계획 상세
 	 */
 	@PostMapping("save")
-	private String save(PlanDto planDto, PlaceDto[] placeDtos, HttpSession session, RedirectAttributes redirectAttributes) 
+	private String save(PlanDto planDto, HttpServletRequest request, HttpSession session, RedirectAttributes redirectAttributes) 
 			throws ServletException, IOException {
 		// TODO: 로그인 되어 있는지 확인 : Interceptor 사용해서 처리
 		System.out.println(planDto.toString());
-		System.out.println(placeDtos[0].toString());
 		try {
 			UserDto userDto = (UserDto) session.getAttribute("userinfo");
 			planDto.setUserId(userDto.getId());
-
 			// 1. 여행지 계획 담기
 			planService.insertPlan(planDto);
 			// 2. 여행지 정보 담기
+			String[] placeIds = request.getParameterValues("place_id");
+			String[] names = request.getParameterValues("name");
+			String[] addrs = request.getParameterValues("address");
+			String[] lats = request.getParameterValues("lat");
+			String[] lngs = request.getParameterValues("lng");
+			String[] imageUrls = request.getParameterValues("image_url");
+			
 			// 여행지 계획의 plan_id 가져오기
-//			int planId = planService.selectPlanId(memberDto.getId(), title);
-			for (PlaceDto placeDto : placeDtos) {
-//				PlaceDto placeDto = new PlaceDto();
-//				placeDto.setPlaceId(Integer.parseInt(placeIds[i]));
-////				placeDto.setPlanId(planId);
-//				placeDto.setName(names[i]);
-//				placeDto.setAddress(addrs[i]);
-//				placeDto.setLat(BigDecimal.valueOf(Double.parseDouble(lats[i])));
-//				placeDto.setLng(BigDecimal.valueOf(Double.parseDouble(lngs[i])));
-//				placeDto.setImageUrl(imageUrls[i]);
+			int planId = planService.selectPlanId(userDto.getId(), planDto.getTitle());
+			for (int i =0 ; i < placeIds.length; i++) {
+				PlaceDto placeDto = new PlaceDto();
+				placeDto.setPlaceId(Integer.parseInt(placeIds[i]));
+				placeDto.setPlanId(planId);
+				placeDto.setName(names[i]);
+				placeDto.setAddress(addrs[i]);
+				placeDto.setLat(BigDecimal.valueOf(Double.parseDouble(lats[i])));
+				placeDto.setLng(BigDecimal.valueOf(Double.parseDouble(lngs[i])));
+				placeDto.setImageUrl(imageUrls[i]);
 				planService.insertPlace(placeDto);
 			}
 
 			// POST 방식은 redirect로 보내야함 -> 그러면 get만 불러와서 새로고침해도 새로 저장되지 않음
-			return "redirect:/plan/mvplan";
+			return "redirect:/plan/view?articleno="+planId+"&pgno=1&key=&word=";
 		} catch (Exception e) {
 			e.printStackTrace();
 			// list 페이지로 이동
@@ -166,4 +171,31 @@ public class PlanController {
 		}
 	}
 
+	@GetMapping("/modify")
+	private String modify(@RequestParam Map<String, String> map, Model model) {
+		model.addAttribute("pgno", map.get("pgno"));
+		model.addAttribute("key", map.get("key"));
+		model.addAttribute("word", map.get("word"));
+		
+		return "/tourist/plan";
+	}
+	
+//	@PostMapping("modify")
+//	private String modify() {
+//		
+//	}
+	
+	@GetMapping("/delete")
+	private String delete(@RequestParam("articleno") int articleNo, Model model) {
+		try {
+			planService.deletePlan(articleNo);
+			return "redirect:/plan/mvplanlist?pgno=1&key=&word=";
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			model.addAttribute("msg", "게시글 삭제 중 오류발생!");
+			return "error/error/";
+		}
+		
+	}
 }

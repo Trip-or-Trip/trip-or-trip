@@ -136,8 +136,8 @@
                         <input
                           type="text"
                           class="form-control my-3 px-3 py-2"
-                          id="view-name"
-                          name="view-name"
+                          id="view-grade"
+                          name="view-grade"
                           value="${userinfo.grade}"
                           readonly
                         />

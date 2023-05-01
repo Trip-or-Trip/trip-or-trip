@@ -1,8 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
- <%@ include file="/WEB-INF/views/include/head.jsp" %>
-      <%-- <%@ include file="/common/confirm.jsp" %> --%>
-      <%@ include file="/WEB-INF/views/include/nav.jsp" %>
+<!DOCTYPE html>
+<html>
+<head>
+<%@ include file="/WEB-INF/views/include/head.jsp"%>
+
+<link href="${root}/assets/css/main.css" type="text/css" rel="stylesheet">
+	<style>
+      .bg-nav {
+      	background-color: #7895B2;
+      }
+  	</style>
+</head>
+
+<body>
+<%@ include file="/WEB-INF/views/include/nav.jsp"%>
       <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10 col-sm-12">
           <h2 class="my-3 py-3 shadow-sm bg-light text-center">
@@ -51,4 +63,7 @@
         }
       });
     </script>
+    <script>
+document.querySelector("#navbar").classList.add("navbar-dark");
+</script>
  <%@ include file="/WEB-INF/views/include/footer.jsp" %>

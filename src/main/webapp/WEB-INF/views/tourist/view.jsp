@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ include file="/include/head.jsp"%>
-<link href="./assets/css/main.css" type="text/css" rel="stylesheet">
+<%@ include file="/WEB-INF/views/include/head.jsp"%>
+<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+<link href="${root}/assets/css/main.css" type="text/css" rel="stylesheet">
 	<style>
       .bg-nav {
       	background-color: #7895B2;
@@ -13,7 +14,7 @@
 </head>
 
 <body>
-	<%@ include file="/include/nav.jsp"%>
+<input type="hidden" id="root" value="${root}">
 	<c:if test="${article eq null}">
 		<script>
 		alert("글이 삭제되었거나 부적절한 URL 접근입니다.");
@@ -41,7 +42,7 @@
 						</p>
 					</div>
 				</div>
-				<div class="col-md-4 align-self-center text-end">댓글 : 17</div>
+				<div class="col-md-4 align-self-center text-end">댓글 : 0</div>
 				<div class="divider mb-3"></div>
 				<div class="container">
 					<div class="row">
@@ -90,7 +91,7 @@
 					</div>
 					<c:if test="${!status.last}">
 						<div class="d-flex align-items-center">
-							<img src="./assets/img/icon/arrows.png" alt="화살표" style="width: 3em; height: 3em;">
+							<img src="${root}/assets/img/icon/arrows.png" alt="화살표" style="width: 3em; height: 3em;">
 						</div>
 					</c:if>
 					</c:forEach>
@@ -103,7 +104,7 @@
 					<c:when test="${status.index%2==0}">
 					<div class="mb-2 container row" style="margin:100 auto;">
 						<div class="col-md-8 p-3 travel-box d-flex flex-row align-content-center border border-4 rounded" style="width: 50%; margin:0 auto;">
-							<img src="./assets/img/noimage.png" alt="${place.name}" style="width: 50%" class="me-2">
+							<img src="${root}/assets/img/noimage.png" alt="${place.name}" style="width: 50%" class="me-2">
 							<div class="travel-info">
 								<h2 class="place_name">${place.name}</h2>
 								<p class="address">${place.address}</p>
@@ -118,7 +119,7 @@
 					<div class="mb-2 row">
 						<div style="width: 10em;" class="col-md-4"></div>
 						<div class="col-md-8 p-3 travel-box d-flex flex-row align-content-center border border-4 rounded" style="width: 50%; margin:0 auto;">
-							<img src="./assets/img/noimage.png" alt="${place.name}" style="width: 50%" class="me-2">
+							<img src="${root}/assets/img/noimage.png" alt="${place.name}" style="width: 50%" class="me-2">
 							<div class="travel-info">
 								<h2 class="place_name">${place.name}</h2>
 								<p class="address">${place.address}</p>
@@ -150,24 +151,25 @@
 	<script>
 	  document.querySelector("#navbar").classList.add("navbar-dark");
       document.querySelector("#btn-list").addEventListener("click", function () {
-        location.href = "${root}/plan?action=mvplanlist";
+        location.href = "${root}/plan/mvplanlist?pgno=${param.pgno}&key=${param.key}&word=${param.word}";
       });
       document.querySelector("#btn-mv-modify").addEventListener("click", function () {
-        alert("글수정하자!!!");
-        location.href = "${root}/article?action=mvmodify&articleno=${article.id}";
+        location.href = "${root}/plan/modify?articleno=${article.id}&pgno=${param.pgno}&key=${param.key}&word=${param.word}";
       });
       document.querySelector("#btn-delete").addEventListener("click", function () {
-        alert("글삭제하자!!!");
-        location.href = "${root}/article?action=delete&articleno=${article.id}";
+        if(confirm("정말로 삭제하시겠습니까?")){
+	        location.href = "${root}/plan/delete?articleno=${article.id}";
+        }
       });
     </script>
 </body>
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=991fde334716cbc5bbcac85358cf5e88&libraries=services,clusterer,drawing"></script>
-<script src="./assets/js/key.js"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=59e882a5fca53baf25f45f5258f75f43&libraries=services,clusterer,drawing"></script>
+<script src="${root}/assets/js/key.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
 	crossorigin="anonymous"></script>
-<script src="./assets/js/planView.js"></script>
+<script src="${root}/assets/js/planView.js"></script>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </html>

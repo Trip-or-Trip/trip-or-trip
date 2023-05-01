@@ -4,7 +4,7 @@
 <html>
 <head>
 <%@ include file="/WEB-INF/views/include/head.jsp"%>
-<%@ include file="/WEB-INF/views/include/nav.jsp"%>
+
 <link href="${root}/assets/css/main.css" type="text/css" rel="stylesheet">
 	<style>
       .bg-nav {
@@ -14,6 +14,7 @@
 </head>
 
 <body>
+<%@ include file="/WEB-INF/views/include/nav.jsp"%>
       <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10 col-sm-12">
           <h2 class="my-3 py-3 shadow-sm bg-light text-center">
@@ -61,8 +62,13 @@
               </tr>
             </thead>
             <tbody>    
-				<c:forEach var="article" items="${articles}">    
+				<c:forEach var="article" items="${articles}"> 
+				<c:if test="${article.userId eq 'admin'}">   
+	              <tr class="text-center" bgcolor="lightgray">
+	            </c:if>
+	            <c:if test="${article.userId ne 'admin'}">
 	              <tr class="text-center">
+	            </c:if>
 	                <th scope="row">${article.id}</th>
 	                <td class="text-start">
 	                  <a
@@ -74,7 +80,7 @@
 	                    ${article.title}
 	                  </a>
 	                </td>
-	                <td>${article.userId}</td>
+                	<td>${article.userId}</td>
 	                <td>${article.hit}</td>
 	                <td>${article.createdAt}</td>
 	              </tr>            
@@ -135,4 +141,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
 	crossorigin="anonymous"></script>
+<script>
+document.querySelector("#navbar").classList.add("navbar-dark");
+</script>
 </html>

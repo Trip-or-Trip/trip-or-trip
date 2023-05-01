@@ -1,7 +1,7 @@
 var latitude;
 var longitude;
 var idxs = [];
-
+let root = document.getElementById("root").value;
 /** 추가 버튼 클릭하면 여행 계획란으로 정보 복사 됨 */
 document.getElementById("plan-add-btn").addEventListener("click", () => {
 //	console.log(clickInfo);
@@ -174,8 +174,7 @@ function makeOption(data) {
 // 지도에 마커를 표시하는 함수입니다
 function displayMarker(place) {
 	// 마커 이미지의 이미지 주소입니다
-	  var imageSrc = "${root}/assets/img/icon/location.png";
-
+	  var imageSrc = `${root}/assets/img/icon/location.png`;
     // 마커 이미지의 이미지 크기 입니다
     var imageSize = new kakao.maps.Size(30, 35);
 
