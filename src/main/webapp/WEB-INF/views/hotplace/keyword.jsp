@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%@ include file="/include/head.jsp" %>
-  <link rel="stylesheet" href="../assets/css/main.css">
+  <%@ include file="/WEB-INF/views/include/head.jsp" %>
+  <link rel="stylesheet" href="${root}/assets/css/main.css">
   
   <style>
   	body {
@@ -29,7 +29,6 @@
   </style>
 </head>
 <body>
-  <!-- <%@ include file="/include/check.jsp" %> -->
   
   <div class="form-container">
   	<form>
@@ -50,9 +49,9 @@
 
   
   <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=991fde334716cbc5bbcac85358cf5e88&libraries=services,clusterer,drawing"></script>
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=74afa46ef6c4beac029af5a59d571a47&libraries=services,clusterer,drawing"></script>
   <script type="text/javascript" src="${root}/assets/js/keyword.js"></script>
-  <%@ include file="/include/footer.jsp" %>
+  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
   
 </body>
 </html>

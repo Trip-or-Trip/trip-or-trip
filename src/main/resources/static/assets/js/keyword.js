@@ -73,7 +73,12 @@ function displaySearchResult(result) {
 }
 
 document.querySelector("#title-submit-btn").addEventListener("click", function() {
-	selectedOne();
+	if(typeof title == "undefined" || title == null || title == "") {
+		alert("장소를 선택해 주세요.");
+	}
+	else {
+		selectedOne();
+	}
 });
 
 function selectedOne() {

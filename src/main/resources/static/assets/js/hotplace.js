@@ -33,8 +33,9 @@ document.querySelector("#hotplace-title").addEventListener("click", function() {
 	let popupHeight = 700;
 	let popupX = (window.screen.width / 2) - (popupWidth / 2);
 	let popupY= (window.screen.height / 2) - (popupHeight / 2);
+	let root = document.querySelector("#root").value;
 	
-	oepnWin = window.open("hotplace/keyword.jsp", "keywordSearchForm", "width=" + popupWidth + ", height=" + popupHeight + ", left=" + popupX + ", top=" + popupY + ", scrollbars=yes");
+	oepnWin = window.open(root + "/hotplace/keyword", "keywordSearchForm", "width=" + popupWidth + ", height=" + popupHeight + ", left=" + popupX + ", top=" + popupY + ", scrollbars=yes");
 });
 
 function makeMapUrl(title) {

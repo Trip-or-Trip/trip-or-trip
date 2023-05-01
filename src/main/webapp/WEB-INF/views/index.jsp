@@ -5,7 +5,7 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <%@ include file="/WEB-INF/views/include/head.jsp" %>
-  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="${root}/assets/css/main.css">
 </head>
 
 <body>
@@ -87,7 +87,7 @@
                 다른 사람에게 소개하고 싶은 나만의 장소가 있나요?<br>
                 핫플레이스를 공유하고, 새로운 핫플레이스를 추천받으세요!
               </p>
-              <a href="${root}/hotplace?action=list">
+              <a href="${root}/hotplace/list">
                 <span>Learn More</span><i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -101,8 +101,8 @@
   <script>	  
 	  document.getElementById("delete-btn").addEventListener("click", function() {
 		 if(confirm("진짜 탈퇴하시나요?")) {
-			 location.href = "${root}/user?action=delete&id=${userinfo.id}";
-		 } 
+			 location.href = "${root}/user/delete/${userinfo.id}";
+		 }
 	  });
 	  
 	  document.getElementById("update-btn").addEventListener("click", function() {
@@ -115,7 +115,6 @@
 		    return;
 		  } else {
 		    let form = document.querySelector("#update-form");
-		    form.setAttribute("action", "${root}/user");
 		    form.submit();
 		  }
 	  });

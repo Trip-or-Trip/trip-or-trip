@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%@ include file="/include/head.jsp" %>
-  <link rel="stylesheet" href="assets/css/main.css">
+  <%@ include file="/WEB-INF/views/include/head.jsp" %>
+  <link rel="stylesheet" href="${root}/assets/css/main.css">
   
   <style>
     .bg-nav {
@@ -13,8 +13,7 @@
   </style>
 </head>
 <body>
-  <%@ include file="/include/nav.jsp" %>
-  <!-- <%@ include file="/include/check.jsp" %> -->
+  <%@ include file="/WEB-INF/views/include/nav.jsp" %>
 
   <main>
     <div class='m-5'>
@@ -26,7 +25,7 @@
         </div>
         
         <!-- 핫플레이스 추가 modal start -->
-        <form class="d-flex" id="hotplace-form" method="POST" role="search" enctype="multipart/form-data">
+        <form class="d-flex" id="hotplace-form" method="POST" action="${root}/hotplace/insert" role="search" enctype="multipart/form-data">
           <div class="modal fade mt-5" id="hotplaceModal" tabindex="-1" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
             <div class="modal-dialog">
@@ -38,7 +37,7 @@
                 <div class="modal-body">
                   <div class="login-container text-center">
                     <div style="display: inline-block; width: 25rem;">
-                      <input type="hidden" id="action" name="action" value="insert">
+                      <input type="hidden" id="root" value="${root}">
                       <input type="hidden" id="hotplace-latitude" name="hotplace-latitude">
                       <input type="hidden" id="hotplace-longitude" name="hotplace-longitude">
                       <input type="hidden" id="hotplace-map-url" name="hotplace-map-url">
@@ -139,7 +138,7 @@
   </main>
   
   <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=991fde334716cbc5bbcac85358cf5e88&libraries=services,clusterer,drawing"></script>
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=74afa46ef6c4beac029af5a59d571a47&libraries=services,clusterer,drawing"></script>
   <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
   <script type="text/javascript" src="${root}/assets/js/hotplace.js"></script>
   <script>
@@ -149,10 +148,9 @@
 		//document.querySelector("#hotplace-map-url").value = result.place_url;
 		
 		let form = document.querySelector("#hotplace-form");
-		form.setAttribute("action", "${root}/hotplace");
 		form.submit();
 	}
   </script>
-  <%@ include file="/include/footer.jsp" %>
+  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

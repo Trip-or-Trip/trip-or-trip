@@ -3,7 +3,7 @@
 <header>
   <nav id="navbar" class="navbar navbar-expand-lg bg-nav shadow py-3">
     <div class="container-fluid mx-5">
-      <a class="navbar-brand fw-bold fs-4 mr-5" href="${root}/index.jsp">Trip or Trip!</a>
+      <a class="navbar-brand fw-bold fs-4 mr-5" href="/">Trip or Trip!</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -33,7 +33,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="${root}/hotplace?action=list">
+            <a class="nav-link active" href="${root}/hotplace/list">
                        핫플레이스 보기
             </a>
           </li>
@@ -52,7 +52,7 @@
               </a>
             </div>
             <div>
-		      <a class="nav-link active" href="${root}/user?action=signout">
+		      <a class="nav-link active" href="${root}/user/signout">
                            로그아웃
               </a>
             </div>
@@ -63,13 +63,13 @@
 		  <div class="navbar-nav mb-2 mb-lg-0">
 		    <div>
           	  <!-- <a class="nav-link active" id="signin-user" data-bs-toggle="modal" data-bs-target="#signupModal"> -->
-          	  <a class="nav-link active" href="${root}/user?action=mvsignin">
+          	  <a class="nav-link active" href="${root}/user/signin">
                            로그인
               </a>
             </div>
             <div>
 		      <!-- <a class="nav-link active" id="signup-user" data-bs-toggle="modal" data-bs-target="#signupModal"> -->
-		      <a class="nav-link active" href="${root}/user?action=mvsignup">
+		      <a class="nav-link active" href="${root}/user/signup">
                            회원가입
               </a>
             </div>
@@ -167,7 +167,7 @@
         
         
         <!-- 회원정보 수정 모달 start -->
-        <form class="d-flex" id="update-form" method="POST" role="search">
+        <form class="d-flex" id="update-form" method="POST" action="${root}/user/update" role="search">
           <div
             class="modal fade mt-5"
             id="updateModal"
@@ -197,7 +197,7 @@
                             type="text"
                             class="form-control my-3 px-3 py-2"
                             id="update-id"
-                            name="update-id"
+                            name="id"
                             value="${userinfo.id}"
                             readonly
                           />
@@ -210,7 +210,7 @@
                             type="password"
                             class="form-control my-3 px-3 py-2"
                             id="update-password"
-                            name="update-password"
+                            name="password"
                             value=""
                             autoComplete="off"
                           />
@@ -223,7 +223,7 @@
                             type="text"
                             class="form-control my-3 px-3 py-2"
                             id="update-name"
-                            name="update-name"
+                            name="name"
                             value="${userinfo.name}"
                             readonly
                           />
@@ -236,7 +236,7 @@
                             type="text"
                             class="form-control my-3 px-3 py-2"
                             id="update-email"
-                            name="update-email"
+                            name="email"
                             value="${userinfo.email}"
                           />
                         </div>
