@@ -39,7 +39,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <!-- 서비스 기능 start -->
-          <div class="col-lg-3 col-md-5 service-item d-flex mb-3 mx-3" data-aos="fade-up">
+          <div class="col-lg-3 col-md-3 service-item d-flex mb-3 mx-3" data-aos="fade-up">
             <div class="icon flex-shrink-0 me-3 mt-2">
               <!-- <i class="bi bi-globe-central-south-asia"></i> -->
               <i class="bi bi-search"></i>
@@ -58,7 +58,7 @@
           <!-- 서비스 기능 end -->
 
           <!-- 서비스 기능 start -->
-          <div class="col-lg-3 col-md-5 service-item d-flex mb-3 mx-3" data-aos="fade-up">
+          <div class="col-lg-3 col-md-3 service-item d-flex mb-3 mx-3" data-aos="fade-up">
             <div class="icon flex-shrink-0 me-3 mt-2">
               <i class="bi bi-airplane-engines"></i>
             </div>
@@ -74,9 +74,10 @@
             </div>
           </div>
           <!-- 서비스 기능 end -->
-
+		</div>
+		<div class="row justify-content-center">
           <!-- 서비스 기능 start -->
-          <div class="col-lg-3 col-md-5 service-item d-flex mb-3 mx-3" data-aos="fade-up">
+          <div class="col-lg-3 col-md-3 service-item d-flex mb-3 mx-3" data-aos="fade-up">
             <div class="icon flex-shrink-0 me-3 mt-2">
               <!-- <i class="bi bi-moon-stars"></i> -->
               <i class="bi bi-bookmark-star"></i>
@@ -88,6 +89,25 @@
                 핫플레이스를 공유하고, 새로운 핫플레이스를 추천받으세요!
               </p>
               <a href="${root}/hotplace/list">
+                <span>Learn More</span><i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- 서비스 기능 end -->
+          
+          <!-- 서비스 기능 start -->
+          <div class="col-lg-3 col-md-3 service-item d-flex mb-3 mx-3" data-aos="fade-up">
+            <div class="icon flex-shrink-0 me-3 mt-2">
+              <!-- <i class="bi bi-moon-stars"></i> -->
+              <i class="bi bi-archive"></i>
+            </div>
+            <div class="mt-3 mb-2">
+              <h4 class="title">게시판</h4>
+              <p class="description">
+                Trip or Trip의 공지사항을 확인해보세요!<br>
+                사람들과 다양한 이야기를 나누어 보세요!
+              </p>
+              <a href="${root}/board/list?pgno=1&key=&word=">
                 <span>Learn More</span><i class="bi bi-arrow-right"></i>
               </a>
             </div>
