@@ -81,14 +81,15 @@ public class HotplaceController {
 	@PostMapping("/insert")
 	public String insert(HotplaceDto hotplaceDto, @RequestParam("hotplace-image") MultipartFile file, HttpSession session, RedirectAttributes redirectAttributes) {
 		try {
-			logger.debug("write hotplaceDto : {}", hotplaceDto);
 			UserDto userDto = (UserDto) session.getAttribute("userinfo");
 			hotplaceDto.setUserId(userDto.getId());
+			logger.debug("write hotplaceDto : {}", hotplaceDto);
 			
 			logger.debug("MultipartFile.isEmpty : {}", file.isEmpty());
 			if(!file.isEmpty()) {
-				String today = new SimpleDateFormat("yyMMdd").format(new Date());
-				String saveFolder = hotplacePath + File.separator + today;
+//				String today = new SimpleDateFormat("yyMMdd").format(new Date());
+//				String saveFolder = hotplacePath + File.separator + today;
+				String saveFolder = hotplacePath;
 				logger.debug("저장 폴더 : {}", saveFolder);
 				File folder = new File(saveFolder);
 				if (!folder.exists())

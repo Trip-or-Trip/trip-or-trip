@@ -38,9 +38,9 @@
                   <div class="login-container text-center">
                     <div style="display: inline-block; width: 25rem;">
                       <input type="hidden" id="root" value="${root}">
-                      <input type="hidden" id="hotplace-latitude" name="hotplace-latitude">
-                      <input type="hidden" id="hotplace-longitude" name="hotplace-longitude">
-                      <input type="hidden" id="hotplace-map-url" name="hotplace-map-url">
+                      <input type="hidden" id="hotplace-latitude" name="latitude">
+                      <input type="hidden" id="hotplace-longitude" name="longitude">
+                      <input type="hidden" id="hotplace-map-url" name="mapUrl">
                       <div class="row d-flex justify-content-center">
                         <div class="col-10">
                           <input type='file' class="form-control my-3 px-3 py-2" accept="image/jpeg, image/png, image/jpg" id="hotplace-image" name="hotplace-image" placeholder="이미지" required>
@@ -48,27 +48,27 @@
                       </div>
                       <div class="row d-flex justify-content-center">
                         <div class="col-10">
-                          <input type='text' class="form-control my-3 py-2" id="hotplace-title" name="hotplace-title" placeholder="장소명" required>
+                          <input type='text' class="form-control my-3 py-2" id="hotplace-title" name="title" placeholder="장소명" required>
                         </div>
                       </div>
                       <div class="row d-flex justify-content-center">
                         <div class="col-10">
-                          <input type="date" class="form-control my-3 px-3 py-2" id="hotplace-join-date" name="hotplace-join-date" placeholder="방문 날짜">
+                          <input type="date" class="form-control my-3 px-3 py-2" id="hotplace-join-date" name="joinDate" placeholder="방문 날짜">
                         </div>
                       </div>
                       <div class="row d-flex justify-content-center">
                         <div class="col-10">
-                          <textarea rows="4" class="form-control my-3 px-3 py-2 h-20" id="hotplace-desc" name="hotplace-desc" placeholder="설명"></textarea>
+                          <textarea rows="4" class="form-control my-3 px-3 py-2 h-20" id="hotplace-desc" name="desc" placeholder="설명"></textarea>
                         </div>
                       </div>
                       <div class="row d-flex justify-content-center">
                         <div class="col-10">
-                          <input type="text" class="form-control my-3 px-3 py-2" id="hotplace-tag1" name="hotplace-tag1" placeholder="해시태그1">
+                          <input type="text" class="form-control my-3 px-3 py-2" id="hotplace-tag1" name="tag1" placeholder="해시태그1">
                         </div>
                       </div>
                       <div class="row d-flex justify-content-center">
                         <div class="col-10">
-                          <input type="text" class="form-control my-3 px-3 py-2" id="hotplace-tag2" name="hotplace-tag2" placeholder="해시태그2">
+                          <input type="text" class="form-control my-3 px-3 py-2" id="hotplace-tag2" name="tag2" placeholder="해시태그2">
                         </div>
                       </div>
                     </div>
@@ -97,12 +97,12 @@
 		        <div class="card hotplace-card px-3 py-2 mx-2">
 		          <div class="card-title mt-3 mb-3">
 		            <div class="mx-2">
-		              <img src="assets/img/user.png" class="hotplace-profile-img me-3">
+		              <img src="${root}/assets/img/user.png" class="hotplace-profile-img me-3">
 		              <span>${hotplace.userId}</span>
 		            </div>
 		          </div>
 		          <div class="card-img-container">
-		            <img src="upload/hotplace/${hotplace.image}" class="card-img">
+		            <img src="/hotplace/image/${hotplace.image}" class="card-img">
 		          </div>
 		            
 		          <div class="card-body">

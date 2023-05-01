@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@ include file="/include/head.jsp" %>
+    <%@ include file="/WEB-INF/views/include/head.jsp" %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="${root}/assets/css/main.css">
 
 	<style>
       .bg-nav {
@@ -14,12 +14,12 @@
   	</style>
 </head>
 <body>
-    <%@ include file="/include/nav.jsp" %>
+    <%@ include file="/WEB-INF/views/include/nav.jsp" %>
 
 <div class='container'>
     <!-- 관광지 검색 하는 영역 start -->
     <form id="search-form" class="d-flex my-3" onsubmit="return false;" role="search" method="POST">
-        <input type="hidden" name="action" value="list">
+        <input type="hidden" name="root" id="root" value="${root}">
         <!-- 지역 리스트 -->
         <select id="search-area" class="form-select me-2">
             <option value="0" selected>검색 할 지역 선택</option>
@@ -53,7 +53,7 @@
 
 
 <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=991fde334716cbc5bbcac85358cf5e88&libraries=services,clusterer,drawing"></script>
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=74afa46ef6c4beac029af5a59d571a47&libraries=services,clusterer,drawing"></script>
 <script type="text/javascript" src="${root}/assets/js/key.js"></script>
 <script type="text/javascript" src="${root}/assets/js/region.js"></script>
 
@@ -76,11 +76,34 @@
 			alert("구/군을 선택하세요.");
 		else if(contentTypeId == 0)
 			alert("관광지 유형을 선택하세요.");
-		else
-			location.href = "${root}/tourist?action=scregion&sidoCode=" + sidoCode + "&gugunCode=" + gugunCode + "&contentTypeId=" + contentTypeId;
+		else {
+			let root = document.querySelector("#root").value;
+			//location.href = "${root}/tourist?action=scregion&sidoCode=" + sidoCode + "&gugunCode=" + gugunCode + "&contentTypeId=" + contentTypeId;
+			fetch(`\${root}/tourist/search/\${sidoCode}/\${gugunCode}/\${contentTypeId}`)
+				.then((response) => response.json())
+				.then((data) => makeMarker(data))
+		}	
 	});
+	
+	function makeMarker(data) {
+		console.log(data);
+		let positions = [];
+		for(let i = 0; i < data.length; i++) {
+			markerInfo = {
+				title: data[i].title,
+				latlng: new kakao.maps.LatLng(data[i].latitude, data[i].longitude),
+				image: data[i].first_image,
+				addr: data[i].addr1,
+				zipcode: data[i].zipcode,
+				tel: data[i].tel
+			};
+			positions.push(markerInfo);
+		}
+		if(positions.length > 0)
+			displayMarker(positions);
+	}
 
-	<c:if test="${not empty attractions}">
+	/* <c:if test="${not empty attractions}">
 		$("#search-area").val("${param.sidoCode}").prop("selected", true);
 		$("#search-content-id").val("${param.contentTypeId}").prop("selected", true);
 		initSubAreaOption("${param.sidoCode}", "${param.gugunCode}");
@@ -100,8 +123,8 @@
 		
 		if(positions.length > 0)
 			displayMarker(positions);
-	</c:if>
+	</c:if> */
 </script>
-<%@ include file="/include/footer.jsp" %>
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
 </html>

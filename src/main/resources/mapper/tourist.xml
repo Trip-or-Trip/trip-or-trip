@@ -22,8 +22,18 @@
 		<result column="mlevel" property="mlevel"/>
 	</resultMap>
 	
+	<resultMap type="sidoDto" id="sido">
+		<result column="sido_code" property="sidoCode"/>
+		<result column="sido_name" property="sidoName"/>
+	</resultMap>
+	
 	<select id="listTourist" parameterType="map" resultMap="attraction">
 		select * from attraction_info
 		where sido_code = #{sidoCode} and gugun_code = #{gugunCode} and content_type_id = #{contentTypeId}
+	</select>
+	
+	<select id="listSido" resultMap="sido">
+		select sido_code, sido_name
+		from sido
 	</select>
 </mapper>

@@ -11,8 +11,8 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var overlay = {};
 var marker = {};
 
-
-let searchUrl = "./assets/data/gugun.json";
+let root = document.querySelector("#root").value; 
+let searchUrl = root + "/assets/data/gugun.json";
 
 // 선택된 시도에 따른 구군 값 가져오기
 let areaCode, gugunCode;
@@ -72,7 +72,7 @@ function initSubAreaOption(sidoCode, gugunCode) {
 
 // 마커 표시 함수
 function displayMarker(positions) {
-	var imageSrc = "./assets/img/icon/location.png"; // 마커 이미지의 이미지 주소
+	var imageSrc = `${root}/assets/img/icon/location.png`; // 마커 이미지의 이미지 주소
 	
 	for(let i = 0; i < positions.length; i++) {
 		var imageSize = new kakao.maps.Size(30, 35); // 마커 이미지의 이미지 크기
@@ -128,7 +128,7 @@ function displayCustomOverlay(mapUrl, marker) {
 		image = marker.image;
 	}
 	else {
-		image = "./assets/img/noimage.png";
+		image = `${root}/assets/img/noimage.png`;
 	}
 	
 	let content = `
