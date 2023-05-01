@@ -38,6 +38,11 @@
                       게시판
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="${root}/notice/list?pgno=1&key=&word=">
+                      공지사항
+            </a>
+          </li>
         </ul>
 
 		<c:if test="${not empty userinfo}">
