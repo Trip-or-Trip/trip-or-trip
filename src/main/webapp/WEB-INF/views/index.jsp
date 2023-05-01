@@ -50,7 +50,7 @@
                 검색 지역을 군/구 단위로 선택해 관광지를 검색합니다.<br />
                 우리 동네에는 어떤 볼 것이 있을까요?
               </p>
-              <a href="${root}/tourist?action=mvregion">
+              <a href="${root}/tourist/region">
                 <span>Learn More</span><i class="bi bi-arrow-right"></i>
               </a>
             </div>
@@ -68,7 +68,7 @@
                 여행에 방문할 새로운 관광지를 추가하고 여행 경로를 확인합니다.<br />
                 나만의 Trip or Trip!을 함께 떠나볼까요?
               </p>
-              <a href="${root}/plan?action=mvplanlist">
+              <a href="${root}/plan/mvplanlist?pgno=1&key=&word=">
                 <span>Learn More</span><i class="bi bi-arrow-right"></i>
               </a>
             </div>

@@ -23,7 +23,7 @@
         	</c:if>
         >
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="${root}/tourist/mvregion">
+            <a class="nav-link active" aria-current="page" href="${root}/tourist/region">
                        지역별 관광지 검색
             </a>
           </li>
