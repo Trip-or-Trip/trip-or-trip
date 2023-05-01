@@ -115,4 +115,9 @@ public class HotplaceController {
 		}
 		return "redirect:/hotplace/list";
 	}
+	
+	@GetMapping("/keyword")
+	public String keyword() {
+		return "hotplace/keyword";
+	}
 }
