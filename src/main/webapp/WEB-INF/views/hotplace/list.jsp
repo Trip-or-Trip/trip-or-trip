@@ -169,7 +169,7 @@
     						  menu
   							</button>
 							<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    						  <li><a class="dropdown-item ${hotplace.num}" id="hotplace-update-modal-btn">핫플레이스 수정</a></li>
+    						  <li><a class="dropdown-item ${hotplace.num}" onclick="viewUpdateModal(this)">핫플레이스 수정</a></li>
    							  <li><a class="dropdown-item" href="${root}/hotplace/delete/${hotplace.num}">핫플레이스 삭제</a></li>
   							</ul>
 						  </div>
@@ -220,12 +220,12 @@
   <script type="text/javascript" src="${root}/assets/js/hotplace.js"></script>
   <script>
     
-    document.querySelector("#hotplace-update-modal-btn").addEventListener("click", function() {
+    function viewUpdateModal(btn) {
     	let modal = new bootstrap.Modal(document.querySelector("#hotplaceUpdateModal"), {
     		backdrop: true,
             keyboard: false,
     	});
-    	let num = this.className.split(" ")[1];
+    	let num = btn.className.split(" ")[1];
     	fetch(`${root}/hotplace/view/\${num}`)
     		.then((response) => response.json())
     		.then((data) => {
@@ -240,7 +240,7 @@
     			document.querySelector("#hotplace-update-tag2").value = data.tag2;
     			modal.show();
     		});
-    });
+    }
   </script>
   <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
