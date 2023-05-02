@@ -2,6 +2,7 @@ var latitude;
 var longitude;
 var idxs = [];
 let root = document.getElementById("root").value;
+var noimg = `${root}/assets/img/noimage.png`;
 /** 추가 버튼 클릭하면 여행 계획란으로 정보 복사 됨 */
 document.getElementById("plan-add-btn").addEventListener("click", () => {
 //	console.log(clickInfo);
@@ -12,10 +13,8 @@ document.getElementById("plan-add-btn").addEventListener("click", () => {
   let placeLng = clickInfo.x;
   let placeTel = clickInfo.phone;
 //  let placeImageUrl = "./assets/img/noimage.png";
-  let placeImageUrl = placeImg;
+  let placeImageUrl = searchedImgs.get(placeName.split(" ")[0]);
   
-  console.log(placeAddr);
-
   let makeDiv = `<div id='${placeId}' class='trip-plan-card rounded border-opacity-50 border border-5 border-primary-subtle me-1' sytle="background-color: gray; width: 100%; height: 100px;">
                           <div class='text-center p-2'>
                               <div class="place-title">${placeName}</div>
@@ -65,7 +64,6 @@ document.getElementById("plan-add-btn").addEventListener("click", () => {
 
 /** 저장 버튼 누르면 DB에 여행 계획 정보 저장 */
 document.getElementById("plan-save-btn").addEventListener("click", () => {
-	console.log("add-btn");
 	let form = document.getElementById("plan-form");
 	form.setAttribute("action", "save");
 	form.submit();
@@ -87,7 +85,7 @@ document.getElementById("plan-delete-btn").addEventListener("click", () => {
 //		markers[i] = null;
 		deleteLine();
     }
-    console.log(markers);
+//    console.log(markers);
     markers = [];
     lines = [];
 });
@@ -116,28 +114,24 @@ document.getElementById("btn-search").addEventListener("click", () => {
   // 키워드로 장소를 검색합니다
   ps.keywordSearch(document.getElementById("search-keyword").value, placesSearchCB);
 });
-
+let searchedImgs = new Map();
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-function placesSearchCB(data, status, pagination) {
+function placesSearchCB(datas, status, pagination) {
   if (status === kakao.maps.services.Status.OK) {
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
     // LatLngBounds 객체에 좌표를 추가합니다
     var bounds = new kakao.maps.LatLngBounds();
-    
-    for (var i = 0; i < data.length; i++) {
-        // 이미지 정보 불러오기
-        var keyword = data[i].place_name;
-        areaUrl += keyword + "&_type=json";
-        
-        var place = data[i];
-        fetch(areaUrl, {method: "GET" })
-        .then((response) => response.json())
+    searchedImgs = new Map();
+    for (var i = 0; i < datas.length; i++) {
+    	var keyword = datas[i].place_name.split(" ")[0];
+        var newUrl = areaUrl + keyword + keyUrl;
+        var place = datas[i];
+        fetch(newUrl, {headers: {'Accept': 'application/json'}})
+        .then((response) => response.text())
         .then((data) => makeOption(data));
-    }
-
-    for (var i = 0; i < data.length; i++) {
-      displayMarker(data[i]);
-      bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+        
+        displayMarker(datas[i], keyword);
+        bounds.extend(new kakao.maps.LatLng(datas[i].y, datas[i].x));
     }
 
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
@@ -154,22 +148,23 @@ var overlay = {};
 
 
 // 관광지 이미지 API로 가져오기
-let areaUrl =
-  "https://apis.data.go.kr/B551011/PhotoGalleryService1/gallerySearchList1?serviceKey=" +
-  serviceKey +
-  "&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&keyword=";
+let areaUrl = 
+`https://apis.data.go.kr/B551011/PhotoGalleryService1/gallerySearchList1?MobileOS=WIN&MobileApp=triportrip&keyword=`;
 
-var placeImg = "";
+let keyUrl = `&serviceKey=qqmr9xPPIeNaINQ4yBU1GUJljRKSxzGUILRxGpdQBkEyF16vLpll%2BbPZ%2FeFeoXRQIuE1OJReyMcWmRxtbNElSQ%3D%3D`;
 
-function makeOption(data) {
-  let areas = data.response.body.items.item;
-  if (!areas) { }
-  else {
-	placeImg = areas[0].galWebImageUrl;
-	console.log(areas[0].galWebImageUrl);
+
+async function makeOption(data) {
+  let parser = new DOMParser();
+  const xml = parser.parseFromString(data, "application/xml");
+  let areas = xml.querySelectorAll("item");
+  if(areas.length == 0){
+	  searchedImgs.set(keyword, noimg);
+  }else{
+	  var area = areas[0];
+	  searchedImgs.set(area.querySelector("galTitle").innerHTML.split(" ")[0], area.querySelector("galWebImageUrl").innerHTML);
   }
 }
-
 
 // 지도에 마커를 표시하는 함수입니다
 function displayMarker(place) {
@@ -192,8 +187,8 @@ function displayMarker(place) {
     markers.push(marker);
     
     var content = "";
-//    var noimg = "./assets/img/noimage.png";
-    var tempimg = placeImg;
+    
+//    var tempimg = thisimg;
 
   // 마커에 클릭이벤트를 등록합니다
   kakao.maps.event.addListener(marker, "click", function () {
@@ -206,7 +201,7 @@ function displayMarker(place) {
     `        </div>` +
     `        <div class="body">` +
     `            <div class="img">` +
-    `                <img src="${tempimg}" width="73" height="70">` +
+    `                <img id="${place.place_name}" src="`+searchedImgs.get(place.place_name.split(" ")[0])+`" alt="${noimg}" width="73" height="70">` +
     `           </div>` +
     `            <div class="desc">` +
     `                <div class="ellipsis">${place.address_name}</div>` +

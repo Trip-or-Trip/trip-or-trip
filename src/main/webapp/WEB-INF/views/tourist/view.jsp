@@ -78,15 +78,17 @@
 					</div>
 				</div>
 				<div class="divider mb-4"></div>
-				<h2>추천 경로</h2>
+				<h2 align="center">추천 경로</h2>
+				<div id="planmap" class="col-md-8 shadow rounded mx-auto p-2 mb-2" style="height: 25em;"></div>
 				<div class="d-flex flex-row">
 					<c:forEach items="${fastPlaces}" var="fastPlace" varStatus="status">
 					<div class="border border-4 rounded me-1 p-2" style="width: 20%">
 						<div class="travel-info">
-							<strong class="fast_place_name">${fastPlace.name}</strong>
-							<p class="fast_address">${fastPlace.address}</p>
-							<div class="fast_lat" style="display: none;">${fastPlace.lat}</div>
-							<div class="fast_lng" style="display: none;">${fastPlace.lng}</div>
+							<strong id="fast_place_name" class="fast_place_name">${fastPlace.name}</strong>
+							<p id="fast_address" class="fast_address">${fastPlace.address}</p>
+							<div id = "fast_lat" class="fast_lat" style="display: none;">${fastPlace.lat}</div>
+							<div id = "fast_lng" class="fast_lng" style="display: none;">${fastPlace.lng}</div>
+							<div id = "fast_img" class="fast_img" style="display: none;">${fastPlace.imageUrl}</div>
 						</div>
 					</div>
 					<c:if test="${!status.last}">
@@ -104,7 +106,7 @@
 					<c:when test="${status.index%2==0}">
 					<div class="mb-2 container row" style="margin:100 auto;">
 						<div class="col-md-8 p-3 travel-box d-flex flex-row align-content-center border border-4 rounded" style="width: 50%; margin:0 auto;">
-							<img src="${root}/assets/img/noimage.png" alt="${place.name}" style="width: 50%" class="me-2">
+							<img src="${place.imageUrl}" alt="${place.name}" style="width: 50%" class="me-2">
 							<div class="travel-info">
 								<h2 class="place_name">${place.name}</h2>
 								<p class="address">${place.address}</p>
@@ -119,7 +121,7 @@
 					<div class="mb-2 row">
 						<div style="width: 10em;" class="col-md-4"></div>
 						<div class="col-md-8 p-3 travel-box d-flex flex-row align-content-center border border-4 rounded" style="width: 50%; margin:0 auto;">
-							<img src="${root}/assets/img/noimage.png" alt="${place.name}" style="width: 50%" class="me-2">
+							<img src="${place.imageUrl}" alt="${place.name}" style="width: 50%" class="me-2">
 							<div class="travel-info">
 								<h2 class="place_name">${place.name}</h2>
 								<p class="address">${place.address}</p>
@@ -154,7 +156,8 @@
         location.href = "${root}/plan/mvplanlist?pgno=${param.pgno}&key=${param.key}&word=${param.word}";
       });
       document.querySelector("#btn-mv-modify").addEventListener("click", function () {
-        location.href = "${root}/plan/modify?articleno=${article.id}&pgno=${param.pgno}&key=${param.key}&word=${param.word}";
+    	  alert("서비스 준비중입니다.");
+        /* location.href = "${root}/plan/modify?articleno=${article.id}&pgno=${param.pgno}&key=${param.key}&word=${param.word}"; */
       });
       document.querySelector("#btn-delete").addEventListener("click", function () {
         if(confirm("정말로 삭제하시겠습니까?")){
