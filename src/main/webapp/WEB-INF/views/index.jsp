@@ -32,10 +32,10 @@
       </div>
     </section>
     <section id="service-list" class="service-list">
-      <div class="container">
+      <div class="container-fluid">
         <div class="row justify-content-center">
           <!-- 서비스 기능 start -->
-          <div class="col-lg-3 col-md-3 service-item d-flex mb-3 mx-3" data-aos="fade-up">
+          <div class="col-lg-2 col-md-5 service-item d-flex mb-3 mx-3" data-aos="fade-up">
             <div class="icon flex-shrink-0 me-3 mt-2">
               <!-- <i class="bi bi-globe-central-south-asia"></i> -->
               <i class="bi bi-search"></i>
@@ -54,7 +54,7 @@
           <!-- 서비스 기능 end -->
 
           <!-- 서비스 기능 start -->
-          <div class="col-lg-3 col-md-3 service-item d-flex mb-3 mx-3" data-aos="fade-up">
+          <div class="col-lg-2 col-md-5 service-item d-flex mb-3 mx-3" data-aos="fade-up">
             <div class="icon flex-shrink-0 me-3 mt-2">
               <i class="bi bi-airplane-engines"></i>
             </div>
@@ -70,10 +70,9 @@
             </div>
           </div>
           <!-- 서비스 기능 end -->
-		</div>
-		<div class="row justify-content-center">
+          
           <!-- 서비스 기능 start -->
-          <div class="col-lg-3 col-md-3 service-item d-flex mb-3 mx-3" data-aos="fade-up">
+          <div class="col-lg-2 col-md-5 service-item d-flex mb-3 mx-3" data-aos="fade-up">
             <div class="icon flex-shrink-0 me-3 mt-2">
               <!-- <i class="bi bi-moon-stars"></i> -->
               <i class="bi bi-bookmark-star"></i>
@@ -92,7 +91,7 @@
           <!-- 서비스 기능 end -->
           
           <!-- 서비스 기능 start -->
-          <div class="col-lg-3 col-md-3 service-item d-flex mb-3 mx-3" data-aos="fade-up">
+          <div class="col-lg-2 col-md-5 service-item d-flex mb-3 mx-3" data-aos="fade-up">
             <div class="icon flex-shrink-0 me-3 mt-2">
               <!-- <i class="bi bi-moon-stars"></i> -->
               <i class="bi bi-archive"></i>
