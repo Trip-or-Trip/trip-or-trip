@@ -1,5 +1,6 @@
 package com.ssafy.hotplace.model.service;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class HotplaceServiceImpl implements HotplaceService {
 //	}
 	
 	@Override
-	public List<HotplaceDto> listHotplace() throws Exception {
+	public List<HotplaceDto> listHotplace() throws SQLException {
 		return hotplaceMapper.listHotplace();
 	}
 
@@ -68,8 +69,28 @@ public class HotplaceServiceImpl implements HotplaceService {
 //	}
 
 	@Override
-	public int insertHotplace(HotplaceDto hotplaceDto) throws Exception {
+	public int insertHotplace(HotplaceDto hotplaceDto) throws SQLException {
 		return hotplaceMapper.insertHotplace(hotplaceDto);
+	}
+
+	@Override
+	public HotplaceDto viewHotplace(String num) throws SQLException {
+		return hotplaceMapper.viewHotplace(num);
+	}
+
+	@Override
+	public String findOriginalImage(String num) throws SQLException {
+		return hotplaceMapper.findOriginalImage(num);
+	}
+
+	@Override
+	public int updateHotplace(HotplaceDto hotplaceDto) throws SQLException {
+		return hotplaceMapper.updateHotplace(hotplaceDto);
+	}
+
+	@Override
+	public int deleteHotplace(String num) throws SQLException {
+		return hotplaceMapper.deleteHotplace(num);
 	}
 	
 	

@@ -2,6 +2,7 @@ package com.ssafy.hotplace.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -15,12 +16,17 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -79,6 +85,7 @@ public class HotplaceController {
 	}
 	
 	@PostMapping("/insert")
+	@Transactional
 	public String insert(HotplaceDto hotplaceDto, @RequestParam("hotplace-image") MultipartFile file, HttpSession session, RedirectAttributes redirectAttributes) {
 		try {
 			UserDto userDto = (UserDto) session.getAttribute("userinfo");
@@ -120,5 +127,56 @@ public class HotplaceController {
 	@GetMapping("/keyword")
 	public String keyword() {
 		return "hotplace/keyword";
+	}
+	
+	@GetMapping("/view/{num}")
+	@ResponseBody
+	public ResponseEntity<?> view(@PathVariable("num") String num) throws SQLException {
+		HotplaceDto hotplaceDto = hotplaceService.viewHotplace(num);
+		
+		return new ResponseEntity<HotplaceDto>(hotplaceDto, HttpStatus.OK);
+	}
+	
+	@PostMapping("/update")
+	@Transactional
+	public String update(HotplaceDto hotplaceDto, @RequestParam("hotplace-update-image") MultipartFile file, HttpSession session, RedirectAttributes redirectAttributes) throws SQLException, IllegalStateException, IOException {
+		UserDto userDto = (UserDto) session.getAttribute("userinfo");
+		hotplaceDto.setUserId(userDto.getId());
+	
+		logger.debug("update hotplace: {}", hotplaceDto);
+		
+		String originalImg = hotplaceService.findOriginalImage(String.valueOf(hotplaceDto.getNum()));
+		
+		logger.debug("MultipartFile.isEmpty : {}", file.isEmpty());
+		if(!file.isEmpty()) {
+//			String today = new SimpleDateFormat("yyMMdd").format(new Date());
+//			String saveFolder = hotplacePath + File.separator + today;
+			String saveFolder = hotplacePath;
+			logger.debug("저장 폴더 : {}", saveFolder);
+			File folder = new File(saveFolder);
+			if (!folder.exists())
+				folder.mkdirs();
+			
+			String originalFileName = file.getOriginalFilename();
+			if (!originalFileName.isEmpty()) {
+				String saveFileName = UUID.randomUUID().toString()
+						+ originalFileName.substring(originalFileName.lastIndexOf('.'));
+				hotplaceDto.setImage(saveFileName);
+				logger.debug("원본 파일 이름 : {}, 실제 저장 파일 이름 : {}", file.getOriginalFilename(), saveFileName);
+				file.transferTo(new File(folder, saveFileName));
+			}
+		}
+		
+		hotplaceService.updateHotplace(hotplaceDto);
+		return "redirect:/hotplace/list";
+	}
+	
+	@GetMapping("/delete/{num}")
+	public String delete(@PathVariable("num") String num) throws SQLException {
+		logger.debug("delete hotplace : {}", num);
+		
+		hotplaceService.deleteHotplace(num);
+		
+		return "redirect:/hotplace/list";
 	}
 }
