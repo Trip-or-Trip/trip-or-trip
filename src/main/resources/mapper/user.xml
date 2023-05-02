@@ -38,4 +38,15 @@
 		select count(id) from user
 		where id = #{id}
 	</select>
+	
+	<select id="findUser" parameterType="string" resultMap="user">
+		select * from user
+		where name = #{name} and email_id = #{emailId} and email_domain = #{emailDomain}
+	</select>
+	
+	<update id="updatePassword" parameterType="string">
+		update user
+		set password = #{tempPassword}
+		where id = #{id}
+	</update>
 </mapper>

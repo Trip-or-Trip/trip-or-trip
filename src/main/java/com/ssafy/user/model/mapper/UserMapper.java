@@ -1,14 +1,19 @@
 package com.ssafy.user.model.mapper;
 
+import java.sql.SQLException;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ssafy.user.model.UserDto;
 
 @Mapper
 public interface UserMapper {
-	UserDto signinUser(String id, String password) throws Exception;
-	int signupUser(UserDto userDto) throws Exception;
-	int deleteUser(String id) throws Exception;
-	int updateUser(UserDto userDto) throws Exception;
-	int idCheck(String id) throws Exception;
+	UserDto signinUser(String id, String password) throws SQLException;
+	int signupUser(UserDto userDto) throws SQLException;
+	int deleteUser(String id) throws SQLException;
+	int updateUser(UserDto userDto) throws SQLException;
+	int idCheck(String id) throws SQLException;
+	
+	UserDto findUser(String name, String emailId, String emailDomain) throws SQLException;
+	int updatePassword(String id, String tempPassword) throws SQLException;
 }

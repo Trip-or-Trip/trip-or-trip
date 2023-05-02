@@ -6,6 +6,7 @@ import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.RSAPublicKeySpec;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +15,10 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ssafy.mail.model.MailDto;
 import com.ssafy.user.model.UserDto;
 import com.ssafy.user.model.service.UserService;
 
@@ -223,12 +228,36 @@ public class UserController {
 		logger.debug("update user: {}", userDto.toString());
 		
 		int result = userService.updateUser(userDto);
-		if(result == 0) {
+		if(result == 1) {
 			redirectAttributes.addFlashAttribute("msg", "회원 정보 수정이 정상적으로 완료됐습니다.");
 		}
 		else {
 			redirectAttributes.addFlashAttribute("msg", "회원 정보 수정 중 문제가 생겼습니다. 다시 시도해 주세요.");
 		}
 		return "redirect:/";
+	}
+	
+	@GetMapping("/password")
+	public String password() {
+		return "user/password";
+	}
+	
+	@GetMapping("/password/{name}/{emailId}/{emailDomain}")
+	@Transactional
+	public String password(@PathVariable("name") String name, @PathVariable("emailId") String emailId, @PathVariable("emailDomain") String emailDomain, RedirectAttributes redirectAttributes) throws SQLException {
+		logger.debug("find password : {}, {}, {}", name, emailId, emailDomain);
+		
+		UserDto userDto = userService.findUser(name, emailId, emailDomain);
+		
+		if(userDto == null) {
+			redirectAttributes.addFlashAttribute("msg", "입력하신 정보와 일치하는 사용자가 없습니다. 다시 시도해 주세요.");
+			return "redirect:/user/password";
+		}
+		else {
+			MailDto mailDto = userService.createMailAndChangePassword(userDto.getId(), name, emailId, emailDomain);
+			userService.sendEmail(mailDto);
+			redirectAttributes.addFlashAttribute("msg", "입력하신 이메일로 임시 비밀번호를 발송했습니다.");
+			return "redirect:/user/signin";
+		}
 	}
 }
