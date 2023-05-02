@@ -13,7 +13,7 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <a class="navbar-toggler-icon"></a>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">

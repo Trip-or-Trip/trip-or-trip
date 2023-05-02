@@ -7,10 +7,8 @@
   <%@ include file="/WEB-INF/views/include/head.jsp" %>
   <link rel="stylesheet" href="${root}/assets/css/main.css">
 </head>
-
+<%@ include file="/WEB-INF/views/include/nav.jsp" %>
 <body>
-  <%@ include file="/WEB-INF/views/include/nav.jsp" %>
-  
   <main>
     <section class="mb-3">
       <div id="main-container">
@@ -99,10 +97,28 @@
             <div class="mt-3 mb-2">
               <h4 class="title">게시판</h4>
               <p class="description">
-                Trip or Trip의 공지사항을 확인해보세요!<br>
+              Trip or Trip 사용자들과 자유로운 소통을 원하시나요?<br>
                 사람들과 다양한 이야기를 나누어 보세요!
               </p>
               <a href="${root}/board/list?pgno=1&key=&word=">
+                <span>Learn More</span><i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <!-- 서비스 기능 end -->
+          
+          <!-- 서비스 기능 start -->
+          <div class="col-lg-2 col-md-5 service-item d-flex mb-3 mx-3" data-aos="fade-up">
+            <div class="icon flex-shrink-0 me-3 mt-2">
+              <!-- <i class="bi bi-moon-stars"></i> -->
+              <i class="bi bi-tags"></i>
+            </div>
+            <div class="mt-3 mb-2">
+              <h4 class="title">공지사항</h4>
+              <p class="description">
+                Trip or Trip의 공지사항을 확인해보세요!
+              </p>
+              <a href="${root}/notice/list?pgno=1&key=&word=">
                 <span>Learn More</span><i class="bi bi-arrow-right"></i>
               </a>
             </div>
