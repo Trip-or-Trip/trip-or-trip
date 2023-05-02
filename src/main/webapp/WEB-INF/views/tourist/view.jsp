@@ -106,10 +106,10 @@
 					<c:when test="${status.index%2==0}">
 					<div class="mb-2 container row" style="margin:100 auto;">
 						<div class="col-md-8 p-3 travel-box d-flex flex-row align-content-center border border-4 rounded" style="width: 50%; margin:0 auto;">
-							<c:if test="${place.imageUrl eq '/'}">
+							<c:if test="${place.imageUrl eq '/' || place.imageUrl eq 'undefined'}">
 							<img src="${root}/assets/img/noimage.png" alt="${place.name}" style="width: 50%" class="me-2">
 							</c:if>
-							<c:if test="${place.imageUrl ne '/'}">
+							<c:if test="${place.imageUrl ne '/' && place.imageUrl ne 'undefined'}">
 							<img src="${place.imageUrl}" alt="${place.name}" style="width: 50%" class="me-2">
 							</c:if>
 							<div class="travel-info">
@@ -126,10 +126,10 @@
 					<div class="mb-2 row">
 						<div style="width: 10em;" class="col-md-4"></div>
 						<div class="col-md-8 p-3 travel-box d-flex flex-row align-content-center border border-4 rounded" style="width: 50%; margin:0 auto;">
-							<c:if test="${place.imageUrl eq '/'}">
+							<c:if test="${place.imageUrl eq '/' || place.imageUrl eq 'undefined'}">
 							<img src="${root}/assets/img/noimage.png" alt="${place.name}" style="width: 50%" class="me-2">
 							</c:if>
-							<c:if test="${place.imageUrl ne '/'}">
+							<c:if test="${place.imageUrl ne '/' && place.imageUrl ne 'undefined'}">
 							<img src="${place.imageUrl}" alt="${place.name}" style="width: 50%" class="me-2">
 							</c:if>
 							<div class="travel-info">

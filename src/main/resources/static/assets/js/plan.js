@@ -201,7 +201,7 @@ function displayMarker(place) {
     `        </div>` +
     `        <div class="body">` +
     `            <div class="img">` +
-    `                <img id="${place.place_name}" src="`+searchedImgs.get(place.place_name.split(" ")[0])+`" alt="${noimg}" width="73" height="70">` +
+    `                <img id="${place.place_name}" src="`+searchedImgs.get(place.place_name.split(" ")[0])+`" alt="${place.place_name}" width="73" height="70">` +
     `           </div>` +
     `            <div class="desc">` +
     `                <div class="ellipsis">${place.address_name}</div>` +
