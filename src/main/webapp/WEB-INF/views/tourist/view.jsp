@@ -80,7 +80,7 @@
 				<div class="divider mb-4"></div>
 				<h2 align="center">추천 경로</h2>
 				<div id="planmap" class="col-md-8 shadow rounded mx-auto p-2 mb-2" style="height: 25em;"></div>
-				<div class="d-flex flex-row">
+				<div class="d-flex center flex-row">
 					<c:forEach items="${fastPlaces}" var="fastPlace" varStatus="status">
 					<div class="border border-4 rounded me-1 p-2" style="width: 20%">
 						<div class="travel-info">
