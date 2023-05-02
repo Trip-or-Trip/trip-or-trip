@@ -48,6 +48,17 @@
 					<div class="row">
 						<!-- kakao map 보여주기 -->
 						<div id="map" class="col-md-8 shadow rounded mx-auto p-2 mb-2" style="height: 25em;"></div>
+						<c:forEach items="${places}" var="place" varStatus="status">
+							<div class="border border-4 rounded me-1 p-2" style="width: 20%; display:none;" >
+								<div class="travel-info">
+									<strong id="old_place_name" class="old_place_name" style="display: none;">${place.name}</strong>
+									<p id = "old_address" class="old_address" style="display: none;">${place.address}</p>
+									<div id = "old_lat" class="old_lat" style="display: none;">${place.lat}</div>
+									<div id = "old_lng" class="old_lng" style="display: none;">${place.lng}</div>
+									<div id = "old_img" class="old_img" style="display: none;">${place.imageUrl}</div>
+								</div>
+							</div>
+						</c:forEach>
 						<!-- kakao map 영역 끝 -->
 						<div class="plan-box container col-md-4" style="height: 25em;">
 							<div class="row">

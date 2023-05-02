@@ -20,17 +20,16 @@ var planmap = new kakao.maps.Map(planmapContainer, mapOption);
 //윈도우가 로드 될 때 여행 계획에 있는 정보로 마크 찍기
 window.onload = function() {
 	/* ---------------- 사용자 입력 경로 ------------------ */
-	let place_name = document.querySelectorAll(".place_name");
-	let address = document.querySelectorAll(".address");
-	let lat = document.querySelectorAll(".lat");
-	let lng = document.querySelectorAll(".lng");
+	let place_name = document.querySelectorAll(".old_place_name");
+	let address = document.querySelectorAll(".old_address");
+	let lat = document.querySelectorAll(".old_lat");
+	let lng = document.querySelectorAll(".old_lng");
 	let imgs = document.querySelectorAll(".fast_img");
-
 	bounds = new kakao.maps.LatLngBounds();
 	
 	for (var i = 0; i < lat.length; i++) {
 		var data = { y : lat[i].innerText, x : lng[i].innerText, 
-				address_name : address[i].innerText, place_name : place_name[i].innerText,
+				address_name : address[i].innerHTML, place_name : place_name[i].innerText,
 				url_name : imgs[i].innerText};
 	    displayMarker(data);
 	    bounds.extend(new kakao.maps.LatLng(data.y, data.x));
