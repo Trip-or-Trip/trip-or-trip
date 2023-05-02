@@ -87,5 +87,10 @@ function selectedOne() {
 	opener.document.querySelector("#hotplace-longitude").value = longitude;
 	opener.document.querySelector("#hotplace-map-url").value = url;
 	
+	opener.document.querySelector("#hotplace-update-title").value = title;
+	opener.document.querySelector("#hotplace-update-latitude").value = latitude;
+	opener.document.querySelector("#hotplace-update-longitude").value = longitude;
+	opener.document.querySelector("#hotplace-update-map-url").value = url;
+	
 	window.close();
 }
