@@ -17,9 +17,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
 
-<!-- <script>
+<script>
 <c:if test="${not empty msg}">
 	alert("${msg}");
-	location.href = "../index.jsp";
 </c:if>
-</script> -->
+</script>

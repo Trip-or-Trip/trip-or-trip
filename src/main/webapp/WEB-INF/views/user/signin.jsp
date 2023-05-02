@@ -16,6 +16,9 @@
     body {
 		text-align: center;
 	}
+	#find-password:link {
+		color: #4d5054;
+	}
   </style>
 </head>
 <body>
@@ -39,10 +42,13 @@
 	                	<input type="text" class="form-control" name="id" id="signin-id" placeholder="아이디">
 					</div>
 	            </div>
-	            <div class="row d-flex justify-content-center my-4">
+	            <div class="row d-flex justify-content-center mt-4 mb-3">
 	            	<div class="col-10">
 	                	<input type="password" class="form-control" name="password" id="signin-password" placeholder="비밀번호">
 	            	</div>
+	            </div>
+	            <div class="row justify-content-end">
+	            	<div class="col-4 me-2"><a href="${root}/user/password" id="find-password">비밀번호 찾기</a></div>
 	            </div>
 	            <div class="row d-flex justify-content-center my-4">
 	                <div class="col-10">
@@ -55,10 +61,6 @@
     
     
     <script>
-      if("${msg}") {
-    	  alert("${msg}");
-      }
-      
 	  document.getElementById('signin-btn').addEventListener("click", function() {
 		  let id = $("#signin-id").val();
 	      let pw = $("#signin-password").val();
@@ -81,7 +83,6 @@
 		      //document.getElementById('signin-password').value = "";
 		        
 			  let form = document.querySelector("#signin-form");
-//			  form.setAttribute("action", "${root}/user");
 			  form.submit();
 		  }
 	  });
