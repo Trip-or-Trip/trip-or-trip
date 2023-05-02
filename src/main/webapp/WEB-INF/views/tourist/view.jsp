@@ -101,7 +101,7 @@
 				<div class="divider mb-3"></div>
 				<div class="align-middle">
 				<h2>타임 라인</h2>
-				<c:forEach items="${places}" var="place" varStatus="status">
+				<c:forEach items="${fastPlaces}" var="place" varStatus="status">
 				<c:choose>
 					<c:when test="${status.index%2==0}">
 					<div class="mb-2 container row" style="margin:100 auto;">
